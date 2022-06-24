@@ -5,7 +5,9 @@ export const teams = Object.freeze({
     getAllStats: "getAllStats",
     getTeamStats: "getTeamStats",
     getTotalGamesPlayed: "getTotalGamesPlayed",
-    getAllUpcommingGames: "getAllUpcommingGames"
+    getAllUpcommingGames: "getAllUpcommingGames",
+    getPointsAgainst: "getPointsAgainst",
+    getPointsFor: "getPointsFor"
   },
   actions: {
     get_Teams: "getTeams",

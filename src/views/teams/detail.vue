@@ -16,6 +16,20 @@
       <div class="chart">
         <bar-chart :chart-data="this.getTotalGamesPlayed.chartData" :options="this.getTotalGamesPlayed.chartOptions" />
       </div>
+      <div v-if="getPointsAgainst" class="against">
+        <h1>Against</h1>
+        <h2>Home</h2>
+        <span>{{ getPointsAgainst.home }}</span>
+        <h2>Away</h2>
+        <span>{{ getPointsAgainst.away }}</span>
+      </div>
+      <div v-if="getPointsFor" class="far">
+        <h1>For</h1>
+        <h2>Home</h2>
+        <span>{{ getPointsFor.home }}</span>
+        <h2>Away</h2>
+        <span>{{ getPointsFor.away }}</span>
+      </div>
     </div>
     <div v-else>
       <span>no Record found</span>
@@ -50,7 +64,7 @@ export default {
   },
   mounted() {
     if (this.$route.params) {
-        this.getStatistics();
+      this.getStatistics();
     }
   },
   computed: {
@@ -85,7 +99,7 @@ export default {
     getUpcommingGames() {
       this.get_UpcommingGames({
         data: {
-            season: this.$route.params.season,
+          season: this.$route.params.season,
           team: this.$route.params.teamId,
         },
         config: {

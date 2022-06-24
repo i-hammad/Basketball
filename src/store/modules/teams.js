@@ -21,6 +21,12 @@ export default {
     },
     getAllUpcommingGames(state) {
       return state.games
+    },
+    getPointsAgainst(state) {
+      return state.statistics.points.against.total
+    },
+    getPointsFor(state) {
+      return state.statistics.points.for.total
     }
   },
   mutations: {
