@@ -31,19 +31,20 @@
         <span>{{ getPointsFor.away }}</span>
       </div>
     </div>
-    <div v-else>
+    <div v-else-if="showNoRecordFound">
       <span>no Record found</span>
     </div>
     <div>
-      <h2>Upcomming games</h2>
-      <div v-if="getAllUpcommingGames.length">
+      <upcomming-games />
+      <!-- <h2>Upcomming games</h2>
+      <div v-if="getAllUpcommingGames">
         <div v-for="(game, index) in getAllUpcommingGames" :key="index">
-          {{ game.teams }}
+          {{ game }}
         </div>
       </div>
       <div v-else>
         <span>no Record found</span>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -52,14 +53,17 @@ import { teams as teamsStoreKeys } from "../../store/keys";
 import { mapGetters, mapActions } from "vuex";
 import pieChart from "../../components/chart/pieChart";
 import barChart from "../../components/chart/barChart";
+import upcommingGames from "./upcommingGames/index"
 export default {
   components: {
     pieChart,
     barChart,
+    upcommingGames
   },
   data() {
     return {
       loaderId: "teamStatsLoaderId",
+      showNoRecordFound: false
     };
   },
   mounted() {
@@ -87,9 +91,11 @@ export default {
         },
       })
         .then(() => {
-          this.getUpcommingGames();
+          this.showNoRecordFound = true
+          // this.getUpcommingGames();
         })
         .catch((err) => {
+          this.showNoRecordFound = true
           this.$alert.fire({
             icon: "error",
             title: `${err}`,

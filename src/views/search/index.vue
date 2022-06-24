@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       model: Object,
-      teamName: null,
+      teamName: undefined,
       selectedSeason: null,
       selectedLeague: null,
       loaderId: "seasonLoaderId",

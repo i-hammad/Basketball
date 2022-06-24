@@ -7,7 +7,7 @@
         <item-template class="col-md-4" :model="team" :route-params="model"></item-template>
       </div>
     </div>
-    <div v-else>
+    <div v-else-if="showNoRecordFound">
       <span>no Record found</span>
     </div>
   </div>
@@ -27,6 +27,7 @@ export default {
     return {
       model: Object,
       loaderId: "teamsLoaderId",
+      showNoRecordFound: false
     };
   },
   computed: {
@@ -44,7 +45,12 @@ export default {
             id: this.loaderId,
           },
         },
-      });
+      }).then(() => {
+        this.showNoRecordFound = true
+      })
+      .catch(() => {
+        this.showNoRecordFound = true
+      })
     },
   },
 };

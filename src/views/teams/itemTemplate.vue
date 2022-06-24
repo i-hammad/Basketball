@@ -12,7 +12,7 @@
 export default {
   props: {
     model: Object,
-    routeParams: Object
+    routeParams: null
   },
   methods: {
     goToDetail() {

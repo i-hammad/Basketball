@@ -37,7 +37,9 @@ export default {
       state.statistics = statistics;
     },
     setUpcommingGames(state, games) {
-      state.games = games.filter(game => game.status.long === "Not Started");
+      state.games = games.filter(game => game.status.long === "Not Started").map(game => {
+        return game.teams
+      });
     },
 
     resetState(state, payload) {
