@@ -3,11 +3,11 @@
     <search @onSearch="getTeams"></search>
     <loader :id="loaderId"></loader>
     <div class="row" v-if="getAllTeams.length">
-      <div v-for="(team, index) in getAllTeams" :key="index">
-        <item-template class="col-md-4" :model="team" :route-params="model"></item-template>
+      <div class="col-md-4" v-for="(team, index) in getAllTeams" :key="index">
+        <item-template :model="team" :route-params="model"></item-template>
       </div>
     </div>
-    <div v-else-if="showNoRecordFound">
+    <div style="margin-top: 100px" v-else-if="showNoRecordFound">
       <span>no Record found</span>
     </div>
   </div>

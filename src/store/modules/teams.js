@@ -4,7 +4,9 @@ export default {
   state: {
     teams: [],
     statistics: {},
-    games:[]
+    games: [],
+    selectedLeague: null,
+    selectedSeason: null,
   },
   getters: {
     getAllTeams(state) {
@@ -20,14 +22,20 @@ export default {
       return ChartHelper.totalgamesPlayed(state.statistics.games.played);
     },
     getAllUpcommingGames(state) {
-      return state.games
+      return state.games;
     },
     getPointsAgainst(state) {
-      return state.statistics.points.against.total
+      return state.statistics.points.against.total;
     },
     getPointsFor(state) {
-      return state.statistics.points.for.total
-    }
+      return state.statistics.points.for.total;
+    },
+    getSelectedSeason(state) {
+      return state.selectedSeason;
+    },
+    getSelectedLeague(state) {
+      return state.selectedLeague;
+    },
   },
   mutations: {
     setTeams(state, teams) {
@@ -37,11 +45,18 @@ export default {
       state.statistics = statistics;
     },
     setUpcommingGames(state, games) {
-      state.games = games.filter(game => game.status.long === "Not Started").map(game => {
-        return game.teams
-      });
+      state.games = games
+        .filter((game) => game.status.long === "Not Started")
+        .map((game) => {
+          return game.teams;
+        });
     },
-
+    setSelectedLeague(state, league) {
+      state.selectedLeague = league;
+    },
+    setSelectedSeason(state, season) {
+      state.selectedSeason = season;
+    },
     resetState(state, payload) {
       Object.assign(state, { teams: [] });
     },
@@ -71,6 +86,12 @@ export default {
           commit("setUpcommingGames", response.data.response);
         });
     },
+    selectSeason({ commit }, param) {
+      commit("setSelectedSeason", param);
+    },
+    selectLeague({ commit }, param) {
+      commit("setSelectedLeague", param);
+    },
     resetNotes({ commit }) {
       return commit("resetState");
     },
@@ -87,7 +108,7 @@ class ChartHelper {
           labels: ["Win", "Loss", "Draw"],
           datasets: [
             {
-              backgroundColor: ["#41B883", "#E46651", "#6c6d70"],
+              backgroundColor: ["#1c4189", "#c7102d", "#c2c2c2"],
               data: data,
             },
           ],
@@ -107,10 +128,10 @@ class ChartHelper {
     if (games) {
       obj = {
         chartData: {
-          labels: ["All","Away", "Home"],
+          labels: ["All", "Away", "Home"],
           datasets: [
             {
-              backgroundColor: ["#6c6d70", "#41B883", "#E46651"],
+              backgroundColor: ["#1c4189", "#c7102d", "#c2c2c2"],
               data: data,
             },
           ],

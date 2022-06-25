@@ -7,12 +7,16 @@ export const teams = Object.freeze({
     getTotalGamesPlayed: "getTotalGamesPlayed",
     getAllUpcommingGames: "getAllUpcommingGames",
     getPointsAgainst: "getPointsAgainst",
-    getPointsFor: "getPointsFor"
+    getPointsFor: "getPointsFor",
+    getSelectedSeason: "getSelectedSeason",
+    getSelectedLeague: "getSelectedLeague"
   },
   actions: {
     get_Teams: "getTeams",
     get_Statistics: "getStatistics",
-    get_UpcommingGames: "getUpcommingGames"
+    get_UpcommingGames: "getUpcommingGames",
+    select_Season: "selectSeason",
+    select_League: "selectLeague"
   },
 });
 

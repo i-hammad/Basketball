@@ -1,16 +1,34 @@
 <template>
   <div>
-    <div>
-      <h2>Upcomming games</h2>
-      <div v-if="getAllUpcommingGames.length">
-        <div v-for="(game, index) in getAllUpcommingGames" :key="index">
-          <item-template :model="game"></item-template>
+      <div class="row">
+        <div class="col text-center">
+          <h2>Upcomming Games</h2>
         </div>
       </div>
+      <div v-if="getAllUpcommingGames.length" class="row">
+        <div class="col-md-6">
+          <h5>Home</h5>
+          <div v-for="(game, index) in getAllUpcommingGames" :key="index">
+            <item-template :model="game.home"></item-template>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h5>Away</h5>
+          <div v-for="(game, index) in getAllUpcommingGames" :key="index">
+            <item-template :model="game.away"></item-template>
+          </div>
+        </div>
+      </div>
+    <div v-else-if="showNoRecordFound">
+        <span>no Record found</span>
+      </div>
+    <!-- <div>
+      <h2>Upcomming games</h2>
+      <div v-if="getAllUpcommingGames.length"></div>
       <div v-else-if="showNoRecordFound">
         <span>no Record found</span>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>
@@ -49,10 +67,10 @@ export default {
         },
       })
         .then(() => {
-            this.showNoRecordFound = true
+          this.showNoRecordFound = true;
         })
         .catch((err) => {
-            this.showNoRecordFound = false
+          this.showNoRecordFound = false;
           this.$alert.fire({
             icon: "error",
             title: `${err}`,

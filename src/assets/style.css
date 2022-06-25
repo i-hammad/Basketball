@@ -1,3 +1,6 @@
+#app {
+  margin-bottom: 70px;
+}
 .generic-app-loader {
     position: fixed;
     z-index: 999;
@@ -33,4 +36,16 @@
     left: 50%;
     margin-left: -74px;
     margin-top: 40px;
+  }
+
+  @media only screen and (max-width: 767px) {
+    .search-filter {
+      display: block;
+      text-align: left;
+    }
+    .search-filter button {
+      margin-top: 30px;
+      width: 100%;
+    }
+
   }

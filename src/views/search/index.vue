@@ -1,7 +1,29 @@
 <template>
   <div>
     <loader :id="loaderId"></loader>
-    <form class="form-container" @submit.prevent="submit">
+    <b-form inline class="align-items-end justify-content-center search-filter" @submit.prevent="submit" v-if="getAllSeasons.length && getAllLeagues.length">
+      <div class="align-items-start">
+      <label class="justify-content-start" for="">Name</label>
+      <b-form-input id="inline-form-input-name" class="mb-2 mr-sm-2 mb-sm-0"></b-form-input>
+      </div>
+      <div class="align-items-start" v-if="getAllSeasons.length">
+        <label class="justify-content-start" for="">Season</label>
+        <select class="mr-sm-2 custom-select" name="seasons" id="seasons" v-model="selectedSeason" required>
+          <option value="Please select one">Please select one</option>
+          <option v-for="(season, index) in getAllSeasons" :key="index" :value="season">{{ season }}</option>
+        </select>
+      </div>
+       <div v-if="getAllLeagues.length" class="align-items-start">
+         <label class="justify-content-start" for="">League</label>
+          <select class="mr-sm-2 custom-select" name="leagues" id="leagues" v-model="selectedLeague" required>
+            <option disabled value="">Please select one</option>
+            <option v-for="(league, index) in getAllLeagues" :key="index" :value="league.id">{{ league.name }}</option>
+          </select>
+        </div>
+      <button class="btn btn-primary">Search</button>
+    </b-form>
+
+    <!-- <form class="form-container" @submit.prevent="submit">
       <div class="sub-form-container">
         <div class="form-field-area">
           <input class="form-field" type="text" v-model="teamName" placeholder="Enter team name" />
@@ -22,7 +44,7 @@
         </div>
       </div>
       <button>Search</button>
-    </form>
+    </form> -->
   </div>
 </template>
 <script>
@@ -30,8 +52,7 @@ import { teams as teamsStoreKeys, seasonFilter as seasonsStoreKeys, league as le
 import { mapGetters, mapActions } from "vuex";
 export default {
   name: "HelloWorld",
-  components: {
-  },
+  components: {},
   data() {
     return {
       model: Object,
@@ -83,6 +104,7 @@ export default {
       });
     },
     submit() {
+      // this.select_season({})
       this.$emit("onSearch", this.selectFilterVal);
     },
   },
