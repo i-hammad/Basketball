@@ -1,5 +1,4 @@
 import layout from "../components/layout";
-import helloWorld from "../components/HelloWorld";
 import teams from "../views/teams";
 import detail from "../views/teams/detail";
 
@@ -8,9 +7,6 @@ const routes = [
     path: "/",
     component: layout,
     children: [
-      // { path: "", name: "home", component: helloWorld, meta: {
-      //   title: "Home"
-      // } },
       { path: "", name: "teams", component: teams, meta: {
         title: "Search Teams"
       } },
@@ -19,6 +15,5 @@ const routes = [
       } },
     ],
   },
-  //   { path: "/:notFound(.*)*", component: NotFound },
 ];
 export default routes;

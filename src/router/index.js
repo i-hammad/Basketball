@@ -6,7 +6,6 @@ Vue.use(Router);
 const DEFAULT_TITLE = 'Basketball';
 const router = new Router({
     mode: "history",
-    // base: '/home',
     routes: routes
 });
 
