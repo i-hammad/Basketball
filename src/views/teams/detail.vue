@@ -198,7 +198,7 @@ export default {
           this.showNoRecordFound = true;
           this.$alert.fire({
             icon: "error",
-            title: `${err}`,
+            title: "Server not responding",
           });
         });
     },
@@ -218,7 +218,7 @@ export default {
         .catch((err) => {
           this.$alert.fire({
             icon: "error",
-            title: `${err}`,
+            title: "Server not responding",
           });
         });
     },

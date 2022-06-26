@@ -21,7 +21,7 @@ export default {
   actions: {
     getLeagues({ commit }, param) {
       return servicesFactory
-        .createService(servicesFactory.serviceType.enums.services.lmsService)
+        .createService(servicesFactory.serviceType.enums.services.basketballService)
         .leagueService.getLeagues(param)
         .then((response) => {
           commit("setLeagues", response.data.response);

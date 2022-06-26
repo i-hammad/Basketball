@@ -1,9 +1,9 @@
-import LmsBaseService from '../lmsBase.service';
+import BasketballBaseService from '../basketballBase.service';
 import {
     apiEndPoints
 } from '../constants'
 
-export default class SeasonService extends LmsBaseService {
+export default class SeasonService extends BasketballBaseService {
     constructor() {
         super({})
     }

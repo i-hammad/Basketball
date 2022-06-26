@@ -64,7 +64,7 @@ export default {
   actions: {
     getTeams({ commit }, param) {
       return servicesFactory
-        .createService(servicesFactory.serviceType.enums.services.lmsService)
+        .createService(servicesFactory.serviceType.enums.services.basketballService)
         .teamService.getTeams(param)
         .then((response) => {
           commit("setTeams", response.data.response);
@@ -72,7 +72,7 @@ export default {
     },
     getStatistics({ commit }, param) {
       return servicesFactory
-        .createService(servicesFactory.serviceType.enums.services.lmsService)
+        .createService(servicesFactory.serviceType.enums.services.basketballService)
         .teamService.getStatistics(param)
         .then((response) => {
           commit("setStatistics", response.data.response);
@@ -80,17 +80,17 @@ export default {
     },
     getUpcommingGames({ commit }, param) {
       return servicesFactory
-        .createService(servicesFactory.serviceType.enums.services.lmsService)
+        .createService(servicesFactory.serviceType.enums.services.basketballService)
         .teamService.getUpcommingGames(param)
         .then((response) => {
           commit("setUpcommingGames", response.data.response);
         });
     },
     selectSeason({ commit }, param) {
-      commit("setSelectedSeason", param);
+      return commit("setSelectedSeason", param);
     },
     selectLeague({ commit }, param) {
-      commit("setSelectedLeague", param);
+      return commit("setSelectedLeague", param);
     },
     resetNotes({ commit }) {
       return commit("resetState");

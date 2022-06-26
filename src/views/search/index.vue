@@ -104,7 +104,8 @@ export default {
       });
     },
     submit() {
-      // this.select_season({})
+      this.select_Season(this.selectedSeason)
+      this.select_League(this.selectedLeague)
       this.$emit("onSearch", this.selectFilterVal);
     },
   },

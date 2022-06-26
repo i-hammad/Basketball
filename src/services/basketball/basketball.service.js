@@ -2,7 +2,7 @@ import TeamService from "./services/team.service";
 import SeasonService from "./services/season.service"
 import LeagueService from "./services/league.service";
 
-export default class lmsService {
+export default class basketballService {
   get teamService() {
     if (!this._TeamService) {
       this._TeamService = new TeamService();

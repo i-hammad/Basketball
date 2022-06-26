@@ -21,7 +21,7 @@ export default {
   actions: {
     getSeasons({ commit }, param) {
       return servicesFactory
-        .createService(servicesFactory.serviceType.enums.services.lmsService)
+        .createService(servicesFactory.serviceType.enums.services.basketballService)
         .seasonService.getSeasons(param)
         .then((response) => {
           commit("setSeasons", response.data.response);

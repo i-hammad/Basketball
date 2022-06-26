@@ -1,6 +1,6 @@
-import lmsService from "./lms/lms.service";
+import basketballService from "./basketball/basketball.service";
 
-const services = { lmsService };
+const services = { basketballService };
 
 export const servicesFactory = {
   createService(serviceType) {
@@ -10,7 +10,7 @@ export const servicesFactory = {
   serviceType: {
     enums: {
       services: Object.freeze({
-        lmsService: "lmsService"
+        basketballService: "basketballService"
       }),
     },
   },

@@ -21,10 +21,15 @@
   </div>
 </template>
 <script>
+import { teams as teamsStoreKeys } from "../../store/keys";
+import { mapGetters } from "vuex";
 export default {
   props: {
     model: Object,
     routeParams: null,
+  },
+  computed: {
+     ...mapGetters(teamsStoreKeys.namespace, teamsStoreKeys.getters),
   },
   methods: {
     goToDetail() {
@@ -32,8 +37,8 @@ export default {
         name: "detail",
         params: {
           teamId: this.model.id,
-          season: this.routeParams.season,
-          leagueId: this.routeParams.league,
+          season: this.routeParams.season || this.getSelectedSeason,
+          leagueId: this.routeParams.league || this.getSelectedLeague,
         },
       });
     },
