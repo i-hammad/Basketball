@@ -9,6 +9,10 @@ npm install
 ```
 npm run dev
 ```
+### Required node version
+```
+v16.13.0
+```
 
 ### Compiles and minifies for production
 ```

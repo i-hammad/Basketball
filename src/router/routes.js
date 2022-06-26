@@ -8,10 +8,10 @@ const routes = [
     path: "/",
     component: layout,
     children: [
-      { path: "", name: "home", component: helloWorld, meta: {
-        title: "Home"
-      } },
-      { path: "search", name: "teams", component: teams, meta: {
+      // { path: "", name: "home", component: helloWorld, meta: {
+      //   title: "Home"
+      // } },
+      { path: "", name: "teams", component: teams, meta: {
         title: "Search Teams"
       } },
       { path: "detail/:teamId/:season/:leagueId", name: "detail", component: detail, meta: {
